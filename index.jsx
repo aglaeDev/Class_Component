@@ -1,15 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-class App extends React.Component {
+class Counter extends React.Component {
+  state: { count: 0 }
+
+  increment = () => {
+    const { count } = this.state;
+    this.setState({ count: count + 1 });
+  }
+
+  decrement = () => {
+    const { count } = this.state;
+    this.setState({ count: count - 1 });
+  }
+
   render() {
+    const { count } = this.state;
+
     return (
       <div>
-        <h1>Hello world</h1>
-        <p>How are you?</p>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
+        <p>Counting: {count}</p>
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default Counter;
